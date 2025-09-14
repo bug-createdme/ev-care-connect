@@ -2,9 +2,11 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Car, Zap, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   const navItems = [
     { label: "Trang chủ", href: "/" },
@@ -46,8 +48,8 @@ const Header = () => {
 
           {/* Desktop Actions */}
           <div className="hidden md:flex items-center space-x-4">
-            <Button variant="ghost">Đăng nhập</Button>
-            <Button className="gradient-primary text-primary-foreground">
+            <Button variant="ghost" onClick={() => navigate('/login')}>Đăng nhập</Button>
+            <Button className="gradient-primary text-primary-foreground" onClick={() => navigate('/register')}>
               Đăng ký
             </Button>
           </div>
@@ -80,8 +82,8 @@ const Header = () => {
               </a>
             ))}
             <div className="flex flex-col space-y-2 px-4 pt-2">
-              <Button variant="ghost" className="justify-start">Đăng nhập</Button>
-              <Button className="gradient-primary text-primary-foreground justify-start">
+              <Button variant="ghost" className="justify-start" onClick={() => { setIsMenuOpen(false); navigate('/login'); }}>Đăng nhập</Button>
+              <Button className="gradient-primary text-primary-foreground justify-start" onClick={() => { setIsMenuOpen(false); navigate('/register'); }}>
                 Đăng ký
               </Button>
             </div>
