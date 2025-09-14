@@ -15,6 +15,12 @@ const buttonVariants = cva(
         secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
+        // EV specific variants using design system
+        hero: "gradient-primary text-primary-foreground hover:shadow-glow transition-smooth",
+        success: "bg-success text-success-foreground hover:bg-success/90",
+        warning: "bg-warning text-warning-foreground hover:bg-warning/90",
+        "ev-primary": "bg-ev-green text-primary-foreground hover:bg-ev-green/90 shadow-soft",
+        "ev-secondary": "bg-ev-blue text-secondary-foreground hover:bg-ev-blue/90",
       },
       size: {
         default: "h-10 px-4 py-2",
