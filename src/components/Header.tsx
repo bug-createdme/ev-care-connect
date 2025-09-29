@@ -1,96 +1,82 @@
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Car, Zap, Menu, X } from "lucide-react";
+
+import { useEffect, useRef, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
-import { useNavigate } from "react-router-dom";
 
 const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const navigate = useNavigate();
-
   const navItems = [
-    { label: "Trang chủ", href: "/" },
-    { label: "Dịch vụ", href: "/services" },
-    { label: "Về chúng tôi", href: "/about" },
-    { label: "Liên hệ", href: "/contact" },
+    { label: "Trang chủ", href: "/", type: "link" },
+    { label: "Mục lục", href: "#veduan", type: "anchor" },
+    { label: "Podcast", href: "#podcast", type: "anchor" },
+    { label: "Liên hệ", href: "#lien-he", type: "anchor" },
   ];
+  const location = useLocation();
+
+  const [show, setShow] = useState(true);
+  const lastScroll = useRef(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const current = window.scrollY;
+      if (current > lastScroll.current && current > 80) {
+        setShow(false); // scroll down, hide
+      } else {
+        setShow(true); // scroll up, show
+      }
+      lastScroll.current = current;
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b">
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <div className="flex items-center space-x-2">
-            <div className="relative">
-              <Car className="h-8 w-8 text-primary" />
-              <Zap className="h-4 w-4 text-secondary absolute -top-1 -right-1" />
-            </div>
-            <div>
-              <h1 className="text-xl font-bold gradient-primary bg-clip-text text-transparent">
-                EV Service
-              </h1>
-              <p className="text-xs text-muted-foreground">Management System</p>
-            </div>
-          </div>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
+    <div
+      className={cn(
+        "w-full flex justify-center items-center fixed top-0 left-0 right-0 z-50 transition-transform duration-300",
+        show ? "translate-y-0" : "-translate-y-full"
+      )}
+      style={{ pointerEvents: 'none' }}
+    >
+      <nav
+        className="bg-[#100f22] rounded-full px-4 py-2 flex gap-2 shadow-lg border border-[#232b3a] mt-6"
+        style={{ pointerEvents: 'auto' }}
+      >
+        {navItems.map((item) => {
+          let isActive = false;
+          if (location.hash) {
+            isActive = item.type === "anchor" && location.hash === item.href;
+          } else {
+            isActive = item.type === "link" && location.pathname === item.href;
+          }
+          const baseClass = "px-6 py-2 rounded-full font-medium text-base transition-all duration-200";
+          const activeClass = isActive ? "bg-cyan-500 text-white shadow-md" : "text-gray-200 hover:bg-[#232b3a] hover:text-cyan-400";
+          if (item.type === "link") {
+            return (
+              <Link
+                key={item.label}
+                to={item.href}
+                className={cn(baseClass, activeClass)}
+                style={{ minWidth: 100, textAlign: 'center' }}
+                onClick={item.href === "/" ? () => { window.scrollTo({ top: 0, behavior: "smooth" }); } : undefined}
+              >
+                {item.label}
+              </Link>
+            );
+          } else {
+            return (
               <a
                 key={item.label}
                 href={item.href}
-                className="text-foreground hover:text-primary transition-smooth"
+                className={cn(baseClass, activeClass)}
+                style={{ minWidth: 100, textAlign: 'center' }}
               >
                 {item.label}
               </a>
-            ))}
-          </nav>
-
-          {/* Desktop Actions */}
-          <div className="hidden md:flex items-center space-x-4">
-            <Button variant="ghost" onClick={() => navigate('/login')}>Đăng nhập</Button>
-            <Button className="gradient-primary text-primary-foreground" onClick={() => navigate('/register')}>
-              Đăng ký
-            </Button>
-          </div>
-
-          {/* Mobile Menu Toggle */}
-          <Button
-            variant="ghost"
-            size="sm"
-            className="md:hidden"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </Button>
-        </div>
-
-        {/* Mobile Menu */}
-        <div className={cn(
-          "md:hidden overflow-hidden transition-all duration-300",
-          isMenuOpen ? "max-h-96 pb-4" : "max-h-0"
-        )}>
-          <nav className="flex flex-col space-y-3 pt-4">
-            {navItems.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                className="text-foreground hover:text-primary transition-smooth px-4 py-2"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {item.label}
-              </a>
-            ))}
-            <div className="flex flex-col space-y-2 px-4 pt-2">
-              <Button variant="ghost" className="justify-start" onClick={() => { setIsMenuOpen(false); navigate('/login'); }}>Đăng nhập</Button>
-              <Button className="gradient-primary text-primary-foreground justify-start" onClick={() => { setIsMenuOpen(false); navigate('/register'); }}>
-                Đăng ký
-              </Button>
-            </div>
-          </nav>
-        </div>
-      </div>
-    </header>
+            );
+          }
+        })}
+      </nav>
+    </div>
   );
 };
 

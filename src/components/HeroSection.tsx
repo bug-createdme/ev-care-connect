@@ -1,109 +1,44 @@
+
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { CheckCircle, Zap, Shield, Clock, Users } from "lucide-react";
-import heroImage from "@/assets/hero-ev-service.jpg";
+import heroImage from "@/assets/hero-section.jpg";
 
 const HeroSection = () => {
-  const features = [
-    { icon: Zap, title: "Công nghệ hiện đại", desc: "Thiết bị chẩn đoán EV tiên tiến" },
-    { icon: Shield, title: "Bảo hành toàn diện", desc: "Cam kết chất lượng dịch vụ" },
-    { icon: Clock, title: "Phục vụ 24/7", desc: "Hỗ trợ khẩn cấp mọi lúc" },
-    { icon: Users, title: "Đội ngũ chuyên nghiệp", desc: "Kỹ thuật viên được chứng nhận" },
-  ];
-
-  const benefits = [
-    "Quản lý lịch bảo dưỡng tự động",
-    "Theo dõi trạng thái xe điện real-time", 
-    "Đặt lịch dịch vụ online dễ dàng",
-    "Thanh toán điện tử an toàn",
-    "Lịch sử bảo dưỡng chi tiết",
-    "Nhắc nhở bảo dưỡng thông minh"
-  ];
-
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+  <section className="relative min-h-screen flex items-end justify-center overflow-hidden pt-12 pb-16">
       {/* Background with overlay */}
       <div className="absolute inset-0">
         <img 
           src={heroImage} 
-          alt="EV Service Center" 
-          className="w-full h-full object-cover"
+          alt="Ho Chi Minh" 
+          className="w-full h-full object-cover brightness-150 contrast-110"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/80 to-background/60" />
-        <div className="absolute inset-0 gradient-hero opacity-20" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
       </div>
 
-      <div className="relative container mx-auto px-4 py-20">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Content */}
-          <div className="space-y-8 animate-slide-up">
-            <div className="space-y-4">
-              <div className="inline-block px-4 py-2 rounded-full bg-accent text-accent-foreground text-sm font-medium">
-                🚗⚡ Hệ thống quản lý bảo dưỡng xe điện
-              </div>
-              
-              <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-                <span className="gradient-primary bg-clip-text text-transparent">
-                  EV Service Center
-                </span>
-                <br />
-                <span className="text-foreground">Management System</span>
-              </h1>
-              
-              <p className="text-xl text-muted-foreground max-w-lg">
-                Giải pháp toàn diện cho trung tâm dịch vụ xe điện - từ đặt lịch bảo dưỡng 
-                đến quản lý quy trình, tối ưu hóa hiệu quả và trải nghiệm khách hàng.
-              </p>
+      <div className="relative container mx-auto px-4 pb-2">
+        <div className="grid lg:grid-cols-2 gap-12 items-end min-h-[60vh]">
+          {/* Left: Logo + Title + Menu */}
+          <div className="space-y-8 flex flex-col justify-end items-start">
+            <div className="flex items-center gap-2">
+              <span className="inline-flex items-center px-4 py-1 rounded-full bg-white text-gray-800 text-sm font-medium shadow-md">
+                <span className="w-2 h-2 bg-green-500 rounded-full mr-2 inline-block"></span>
+                HCM202 - FA25 - SE1741
+              </span>
             </div>
-
-            {/* Benefits */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-              {benefits.map((benefit, index) => (
-                <div key={index} className="flex items-center space-x-3">
-                  <CheckCircle className="h-5 w-5 text-primary flex-shrink-0" />
-                  <span className="text-sm text-foreground">{benefit}</span>
-                </div>
-              ))}
-            </div>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button 
-                size="lg" 
-                className="gradient-primary text-primary-foreground shadow-glow"
-                onClick={() => window.location.href = '/customer'}
-              >
-                Dùng thử miễn phí
-              </Button>
-              <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
-                Xem demo
-              </Button>
-            </div>
+            <h1 className="text-4xl md:text-5xl font-extrabold leading-tight text-[#5b8cff] drop-shadow-lg uppercase">
+              KHÔNG CÓ GÌ QUÝ HƠN<br />
+              ĐỘC LẬP, TỰ DO
+            </h1>
           </div>
 
-          {/* Right Content - Feature Cards */}
-          <div className="grid grid-cols-2 gap-4 animate-slide-up" style={{ animationDelay: '0.2s' }}>
-            {features.map((feature, index) => (
-              <Card key={index} className="p-6 shadow-card gradient-card border-0 hover:shadow-glow transition-smooth">
-                <div className="space-y-3">
-                  <div className="w-12 h-12 rounded-full gradient-primary flex items-center justify-center">
-                    <feature.icon className="h-6 w-6 text-primary-foreground" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-foreground">{feature.title}</h3>
-                    <p className="text-sm text-muted-foreground">{feature.desc}</p>
-                  </div>
-                </div>
-              </Card>
-            ))}
+          {/* Right: CTA + Info Box */}
+          <div className="flex flex-col items-end gap-6 justify-end">
+            <div className="bg-white/80 rounded-2xl p-6 max-w-md shadow-xl text-black text-base">
+              <div className="text-sm">Tư tưởng Hồ Chí Minh về đại đoàn kết toàn dân tộc là một trong những di sản tư tưởng quý báu nhất của Người, có ý nghĩa chiến lược trong sự nghiệp cách mạng của dân tộc Việt Nam.</div>
+            </div>
           </div>
         </div>
       </div>
-
-      {/* Floating elements */}
-      <div className="absolute top-1/4 right-10 w-4 h-4 bg-primary rounded-full animate-float opacity-60" />
-      <div className="absolute top-3/4 right-1/4 w-6 h-6 bg-secondary rounded-full animate-float opacity-40" style={{ animationDelay: '0.5s' }} />
-      <div className="absolute top-1/2 left-10 w-3 h-3 bg-charging-orange rounded-full animate-float opacity-50" style={{ animationDelay: '1s' }} />
     </section>
   );
 };

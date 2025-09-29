@@ -1,147 +1,73 @@
-import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { User, Wrench, Settings, UserCheck } from "lucide-react";
+import mucLucImg from "@/assets/muc-luc.jpg";
+
+const chapters = [
+  {
+    id: "vai-tro-dai-doan-ket",
+    title: "Vai trò của đại đoàn kết toàn dân tộc",
+    desc: "Tư tưởng đại đoàn kết toàn dân tộc của Hồ Chí Minh có vai trò đặc biệt quan trọng trong sự nghiệp cách mạng Việt Nam, thể hiện tầm nhìn chiến lược và sự sáng tạo của Người.",
+  },
+  {
+    id: "luc-luong-cau-thanh",
+    title: "Lực lượng cấu thành khối đại đoàn kết",
+    desc: "Khối đại đoàn kết toàn dân tộc được hình thành từ sự thống nhất của các lực lượng xã hội trên cơ sở những nền tảng vững chắc.",
+  },
+  {
+    id: "dieu-kien-xay-dung",
+    title: "Điều kiện để xây dựng khối đại đoàn kết",
+    desc: "Việc xây dựng khối đại đoàn kết toàn dân tộc đòi hỏi những điều kiện cơ bản về tư tưởng, tình cảm và tổ chức.",
+  },
+  {
+    id: "to-chuc-khoi-dai-doan-ket",
+    title: "Hình thức tổ chức của khối đại đoàn kết toàn dân tộc – Mặt trận dân tộc thống nhất",
+    desc: "Mặt trận dân tộc thống nhất là hình thức tổ chức cao nhất của khối đại đoàn kết toàn dân tộc.",
+  },
+  {
+    id: "phuong-thuc-xay-dung",
+    title: "Phương thức xây dựng khối đại đoàn kết dân tộc",
+    desc: "Phương thức xây dựng khối đại đoàn kết thể hiện tính khoa học và nghệ thuật trong công tác vận động quần chúng.",
+  },
+  {
+    id: "chien-luoc-lau-dai",
+    title: "Vì sao đại đoàn kết là chiến lược lâu dài, không chỉ sách lược",
+    desc: "Đại đoàn kết toàn dân tộc không phải là sách lược tình thế mà là chiến lược lâu dài, xuyên suốt của cách mạng Việt Nam.",
+  },
+];
 
 const RoleSelection = () => {
-  const roles = [
-    {
-      id: "customer",
-      title: "Khách hàng",
-      description: "Đặt lịch bảo dưỡng, theo dõi xe, thanh toán online",
-      icon: User,
-      features: [
-        "Đặt lịch bảo dưỡng/sửa chữa",
-        "Theo dõi trạng thái xe điện",
-        "Lịch sử bảo dưỡng chi tiết",
-        "Thanh toán online an toàn"
-      ],
-      color: "gradient-primary"
-    },
-    {
-      id: "staff",
-      title: "Nhân viên",
-      description: "Tiếp nhận khách hàng, quản lý lịch hẹn, chat support",
-      icon: UserCheck,
-      features: [
-        "Quản lý hồ sơ khách hàng",
-        "Tiếp nhận yêu cầu đặt lịch",
-        "Chat trực tuyến với khách",
-        "Lập phiếu tiếp nhận dịch vụ"
-      ],
-      color: "gradient-secondary"
-    },
-    {
-      id: "technician",
-      title: "Kỹ thuật viên",
-      description: "Thực hiện bảo dưỡng, ghi nhận tình trạng xe",
-      icon: Wrench,
-      features: [
-        "Nhận phân công công việc",
-        "Checklist bảo dưỡng EV",
-        "Ghi nhận tình trạng xe",
-        "Cập nhật tiến độ công việc"
-      ],
-      color: "bg-warning text-warning-foreground"
-    },
-    {
-      id: "admin",
-      title: "Quản trị viên",
-      description: "Quản lý toàn bộ hệ thống, báo cáo, phân tích",
-      icon: Settings,
-      features: [
-        "Quản lý nhân sự & phân ca",
-        "Báo cáo doanh thu & chi phí",
-        "Quản lý kho phụ tùng",
-        "Phân tích xu hướng & AI insights"
-      ],
-      color: "bg-destructive text-destructive-foreground"
-    }
-  ];
-
   return (
-    <section className="py-20 bg-muted/30">
-      <div className="container mx-auto px-4">
-        <div className="text-center space-y-4 mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold">
-            Chọn <span className="gradient-primary bg-clip-text text-transparent">vai trò</span> của bạn
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Hệ thống được thiết kế cho 4 nhóm người dùng với các tính năng chuyên biệt
-          </p>
+    <section className="py-0 relative" id="veduan">
+      <div className="absolute inset-0 z-0">
+        <img
+          src={mucLucImg}
+          alt="background"
+          className="w-full h-full object-cover blur-sm brightness-75"
+          style={{ zIndex: 0 }}
+        />
+        <div className="absolute inset-0 w-full h-full bg-red-600 bg-opacity-90" style={{mixBlendMode: 'multiply', zIndex: 1}}></div>
+      </div>
+      <div className="relative z-10 container mx-auto px-4 py-24">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-extrabold uppercase text-white tracking-wide mb-4">Khám phá trọn vẹn Tư Tưởng Hồ Chí Minh Về Đại Đoàn Kết Toàn Dân Tộc.</h2>
         </div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {roles.map((role, index) => (
-            <Card 
-              key={role.id} 
-              className="p-6 shadow-card hover:shadow-glow transition-smooth cursor-pointer group border-0 gradient-card"
-              style={{ animationDelay: `${index * 0.1}s` }}
+        <div className="grid md:grid-cols-2 gap-12">
+          {chapters.map((c, idx) => (
+            <a
+              key={c.id}
+              href={`#${c.id}`}
+              className={
+                "group block bg-white/10 rounded-2xl p-8 shadow-lg border border-white/20 transition-all hover:bg-white/20 hover:scale-[1.03] relative cursor-pointer"
+              }
             >
-              <div className="space-y-6">
-                {/* Icon & Title */}
-                <div className="space-y-3">
-                  <div className={`w-16 h-16 rounded-xl ${role.color} flex items-center justify-center group-hover:scale-110 transition-bounce`}>
-                    <role.icon className="h-8 w-8" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-foreground">{role.title}</h3>
-                    <p className="text-sm text-muted-foreground">{role.description}</p>
-                  </div>
-                </div>
-
-                {/* Features */}
-                <div className="space-y-2">
-                  {role.features.map((feature, featureIndex) => (
-                    <div key={featureIndex} className="flex items-start space-x-2">
-                      <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                      <span className="text-sm text-foreground">{feature}</span>
-                    </div>
-                  ))}
-                </div>
-
-                {/* CTA Button */}
-                <Button 
-                  className="w-full group-hover:shadow-glow transition-smooth"
-                  variant={role.id === 'customer' ? 'default' : 'outline'}
-                  onClick={() => {
-                    if (role.id === 'customer') {
-                      window.location.href = '/customer';
-                    } else {
-                      // For demo purposes, show alert for other roles
-                      alert(`${role.title} dashboard sẽ được phát triển trong phiên bản tiếp theo!`);
-                    }
-                  }}
-                >
-                  Truy cập {role.title}
-                </Button>
+              <div className="flex items-center gap-4 mb-2">
+                <span className="w-10 h-10 flex items-center justify-center rounded-full bg-white text-red-600 font-bold text-xl border-2 border-white">{idx + 1}</span>
+                <span className="text-lg font-bold text-white">{c.title}</span>
+                <span className="ml-auto text-white/70 group-hover:text-white text-xs transition-transform transform group-hover:scale-110">↗</span>
               </div>
-            </Card>
+              <div className="text-white text-base leading-relaxed">
+                {c.desc}
+              </div>
+            </a>
           ))}
-        </div>
-
-        {/* Demo Section */}
-        <div className="text-center mt-16">
-          <Card className="inline-block p-8 shadow-card gradient-card border-0">
-            <div className="space-y-4">
-              <h3 className="text-2xl font-bold gradient-primary bg-clip-text text-transparent">
-                Dùng thử miễn phí
-              </h3>
-              <p className="text-muted-foreground max-w-md">
-                Khám phá toàn bộ tính năng của hệ thống quản lý bảo dưỡng xe điện
-              </p>
-              <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                <Button 
-                  className="gradient-primary text-primary-foreground shadow-glow"
-                  onClick={() => window.location.href = '/customer'}
-                >
-                  Bắt đầu dùng thử
-                </Button>
-                <Button variant="outline" className="border-primary text-primary">
-                  Xem video demo
-                </Button>
-              </div>
-            </div>
-          </Card>
         </div>
       </div>
     </section>

@@ -1,72 +1,44 @@
-import { Car, Zap, Mail, Phone, MapPin } from "lucide-react";
+
 
 const Footer = () => {
   return (
-    <footer className="bg-foreground text-background py-12">
+    <footer className="bg-[#1a2233] text-white py-12 mt-12">
       <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-4 gap-8">
-          {/* Company Info */}
+        <div className="grid md:grid-cols-3 gap-8">
+          {/* Chủ đề */}
           <div className="space-y-4">
-            <div className="flex items-center space-x-2">
-              <div className="relative">
-                <Car className="h-8 w-8 text-primary-glow" />
-                <Zap className="h-4 w-4 text-secondary absolute -top-1 -right-1" />
-              </div>
-              <div>
-                <h3 className="text-xl font-bold">EV Service</h3>
-                <p className="text-xs opacity-80">Management System</p>
-              </div>
-            </div>
-            <p className="text-sm opacity-80">
-              Giải pháp quản lý bảo dưỡng xe điện toàn diện, hiện đại và thông minh.
-            </p>
+            <h3 className="text-2xl font-bold">Tư Tưởng Hồ Chí Minh</h3>
+            <p className="text-base opacity-80">Về Đại Đoàn Kết Toàn Dân Tộc</p>
+            <blockquote className="italic text-sm text-cyan-300 border-l-4 border-cyan-400 pl-4 mt-2">
+              “Đoàn kết, đoàn kết, đại đoàn kết. Thành công, thành công, đại thành công.”
+            </blockquote>
           </div>
 
-          {/* Quick Links */}
+          {/* Ý nghĩa */}
           <div className="space-y-4">
-            <h4 className="font-semibold">Liên kết nhanh</h4>
-            <ul className="space-y-2 text-sm opacity-80">
-              <li><a href="/" className="hover:text-primary-glow transition-smooth">Trang chủ</a></li>
-              <li><a href="/services" className="hover:text-primary-glow transition-smooth">Dịch vụ</a></li>
-              <li><a href="/about" className="hover:text-primary-glow transition-smooth">Về chúng tôi</a></li>
-              <li><a href="/contact" className="hover:text-primary-glow transition-smooth">Liên hệ</a></li>
+            <h4 className="font-semibold">Ý nghĩa đại đoàn kết</h4>
+            <ul className="space-y-2 text-sm opacity-80 list-disc list-inside">
+              <li>Tăng cường sức mạnh dân tộc</li>
+              <li>Phát huy truyền thống yêu nước</li>
+              <li>Gắn kết mọi tầng lớp nhân dân</li>
+              <li>Động lực phát triển đất nước</li>
             </ul>
           </div>
 
-          {/* Services */}
+          {/* Liên hệ & thông tin nhóm */}
           <div className="space-y-4">
-            <h4 className="font-semibold">Dịch vụ</h4>
+            <h4 className="font-semibold">Thông tin nhóm thực hiện</h4>
             <ul className="space-y-2 text-sm opacity-80">
-              <li>Bảo dưỡng định kỳ</li>
-              <li>Sửa chữa xe điện</li>
-              <li>Thay thế linh kiện</li>
-              <li>Kiểm tra pin EV</li>
-              <li>Hỗ trợ khẩn cấp</li>
+              <li>Môn học - HCM202</li>
+              <li>GVHD: Nguyễn Trung Hiếu</li>
+              <li>Sinh viên: Nhóm 4</li>
+              <li>Email: nhom4.hcm202@example.com</li>
             </ul>
-          </div>
-
-          {/* Contact */}
-          <div className="space-y-4">
-            <h4 className="font-semibold">Liên hệ</h4>
-            <div className="space-y-3 text-sm opacity-80">
-              <div className="flex items-center space-x-2">
-                <Mail className="h-4 w-4" />
-                <span>support@evservice.vn</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Phone className="h-4 w-4" />
-                <span>1900 1234</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <MapPin className="h-4 w-4" />
-                <span>Hà Nội, Việt Nam</span>
-              </div>
-            </div>
           </div>
         </div>
 
-        <div className="border-t border-background/20 mt-8 pt-8 text-center text-sm opacity-60">
-          <p>&copy; 2024 EV Service Management System. All rights reserved.</p>
+        <div className="border-t border-white/20 mt-8 pt-8 text-center text-sm opacity-60">
+          <p>&copy; 2025 Chủ đề: Tư Tưởng Hồ Chí Minh về Đại Đoàn Kết Toàn Dân Tộc. Nhóm 4 - HCM202.</p>
         </div>
       </div>
     </footer>
