@@ -2,6 +2,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ScrollToTop from "@/components/ScrollToTop";
 
+
+import Intro from "./pages/Intro";
+import TeamMembers from "./pages/TeamMembers";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import RoleDetail6ChienLuoc from "./pages/RoleDetail6_ChienLuoc";
@@ -19,7 +22,9 @@ const App = () => (
   <BrowserRouter>
     <ScrollToTop />
     <Routes>
-      <Route path="/" element={<Index />} />
+  <Route path="/" element={<Intro />} />
+  <Route path="team" element={<TeamMembers />} />
+  <Route path="home" element={<Index />} />
       <Route path="vai-tro-dai-doan-ket" element={<RoleDetail1VaiTro />} />
       <Route path="luc-luong-cau-thanh" element={<RoleDetail2LucLuong />} />
       <Route path="dieu-kien-xay-dung" element={<RoleDetail3DieuKien />} />
