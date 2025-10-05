@@ -1,4 +1,6 @@
+
 import mucLucImg from "@/assets/muc-luc.jpg";
+import { Link } from "react-router-dom";
 
 const chapters = [
   {
@@ -50,24 +52,28 @@ const RoleSelection = () => {
           <h2 className="text-3xl md:text-4xl font-extrabold uppercase text-white tracking-wide mb-4">Khám phá trọn vẹn Tư Tưởng Hồ Chí Minh Về Đại Đoàn Kết Toàn Dân Tộc.</h2>
         </div>
         <div className="grid md:grid-cols-2 gap-12">
-          {chapters.map((c, idx) => (
-            <a
-              key={c.id}
-              href={`#${c.id}`}
-              className={
-                "group block bg-white/10 rounded-2xl p-8 shadow-lg border border-white/20 transition-all hover:bg-white/20 hover:scale-[1.03] relative cursor-pointer"
-              }
-            >
-              <div className="flex items-center gap-4 mb-2">
-                <span className="w-10 h-10 flex items-center justify-center rounded-full bg-white text-red-600 font-bold text-xl border-2 border-white">{idx + 1}</span>
-                <span className="text-lg font-bold text-white">{c.title}</span>
-                <span className="ml-auto text-white/70 group-hover:text-white text-xs transition-transform transform group-hover:scale-110">↗</span>
-              </div>
-              <div className="text-white text-base leading-relaxed">
-                {c.desc}
-              </div>
-            </a>
-          ))}
+          {chapters.map((c, idx) => {
+            // Map id to route path
+            const to = "/" + c.id;
+            return (
+              <Link
+                key={c.id}
+                to={to}
+                className={
+                  "group block bg-white/10 rounded-2xl p-8 shadow-lg border border-white/20 transition-all hover:bg-white/20 hover:scale-[1.03] relative cursor-pointer"
+                }
+              >
+                <div className="flex items-center gap-4 mb-2">
+                  <span className="w-10 h-10 flex items-center justify-center rounded-full bg-white text-red-600 font-bold text-xl border-2 border-white">{idx + 1}</span>
+                  <span className="text-lg font-bold text-white">{c.title}</span>
+                  <span className="ml-auto text-white/70 group-hover:text-white text-xs transition-transform transform group-hover:scale-110">↗</span>
+                </div>
+                <div className="text-white text-base leading-relaxed">
+                  {c.desc}
+                </div>
+              </Link>
+            );
+          })}
         </div>
       </div>
     </section>

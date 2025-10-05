@@ -1,6 +1,6 @@
 
 import { useEffect, useRef, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { cn } from "@/lib/utils";
 
 const Header = () => {
@@ -8,9 +8,10 @@ const Header = () => {
     { label: "Trang chủ", href: "/", type: "link" },
     { label: "Mục lục", href: "#veduan", type: "anchor" },
     { label: "Podcast", href: "#podcast", type: "anchor" },
-    { label: "Liên hệ", href: "#lien-he", type: "anchor" },
+    { label: "Liên hệ", href: "/lien-he", type: "link" },
   ];
   const location = useLocation();
+  const navigate = useNavigate();
 
   const [show, setShow] = useState(true);
   const lastScroll = useRef(0);
@@ -63,12 +64,37 @@ const Header = () => {
               </Link>
             );
           } else {
+            // Nếu không ở trang chủ, anchor sẽ chuyển về /#anchor để luôn hoạt động
+            const isHome = location.pathname === "/";
+            const anchorHref = isHome ? item.href : `/${item.href}`;
+            const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+              if (!isHome) {
+                e.preventDefault();
+                // Dùng navigate để về trang chủ kèm hash
+                navigate(`/${item.href}`);
+                // Đợi trang chủ mount xong mới scroll
+                setTimeout(() => {
+                  const id = item.href.replace('#', '');
+                  const el = document.getElementById(id);
+                  if (el) {
+                    el.scrollIntoView({ behavior: 'smooth' });
+                  } else {
+                    // Nếu chưa có, thử lại sau 1 chút (trường hợp DOM chưa render kịp)
+                    setTimeout(() => {
+                      const el2 = document.getElementById(id);
+                      if (el2) el2.scrollIntoView({ behavior: 'smooth' });
+                    }, 300);
+                  }
+                }, 300);
+              }
+            };
             return (
               <a
                 key={item.label}
-                href={item.href}
+                href={anchorHref}
                 className={cn(baseClass, activeClass)}
                 style={{ minWidth: 100, textAlign: 'center' }}
+                onClick={handleAnchorClick}
               >
                 {item.label}
               </a>
