@@ -4,7 +4,7 @@ import ScrollToTop from "@/components/ScrollToTop";
 
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
-import RoleDetail6ChienLuoc from "./pages/ROleDetail6_ChienLuoc";
+import RoleDetail6ChienLuoc from "./pages/RoleDetail6_ChienLuoc";
 import ContactMeaning from "./pages/ContactMeaning";
 import RoleDetail1VaiTro from "./pages/RoleDetail1_VaiTro";
 import RoleDetail2LucLuong from "./pages/RoleDetail2_LucLuong";
