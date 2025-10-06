@@ -1,42 +1,44 @@
-import React, { useEffect, useRef } from "react";
+import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-const INTRO_VIDEO_DURATION = 17000; // ms, fallback if video can't detect end
 
 const Intro: React.FC = () => {
   const navigate = useNavigate();
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [started, setStarted] = useState(false);
 
-  useEffect(() => {
-    // Fallback: auto next after fixed time
-    timeoutRef.current = setTimeout(() => {
-      navigate("/team");
-    }, INTRO_VIDEO_DURATION);
-    return () => {
-      if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    };
-  }, [navigate]);
+  const handlePlay = () => {
+    setStarted(true);
+    videoRef.current?.play();
+  };
 
   const handleEnded = () => {
-    if (timeoutRef.current) clearTimeout(timeoutRef.current);
     navigate("/team");
   };
 
   return (
     <div className="fixed inset-0 w-screen h-screen bg-black z-[9999] flex items-center justify-center">
       <video
+        ref={videoRef}
         src="/intro.mp4"
-        autoPlay
         onEnded={handleEnded}
         className="w-full h-full object-cover"
         playsInline
-        // controls={false} // Hide controls for clean intro
+        controls={false}
         style={{ background: "#000" }}
       >
         Trình duyệt của bạn không hỗ trợ video.
       </video>
-      {/* Optional: overlay text */}
-      {/* <div className="absolute bottom-10 left-0 right-0 text-center text-white text-xl font-bold drop-shadow-lg">Chào mừng các bạn và thầy!</div> */}
+      {!started && (
+        <button
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 p-0 m-0 border-none bg-transparent hover:bg-transparent focus:bg-transparent shadow-none flex items-center justify-center"
+          onClick={handlePlay}
+          aria-label="Phát video"
+        >
+          <svg width="72" height="72" viewBox="0 0 72 72" fill="none">
+            <polygon points="28,20 56,36 28,52" fill="#06b6d4" />
+          </svg>
+        </button>
+      )}
     </div>
   );
 };
