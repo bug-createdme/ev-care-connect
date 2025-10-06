@@ -13,6 +13,18 @@ const TeamMembers: React.FC = () => {
   const navigate = useNavigate();
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-pink-100 to-blue-100">
+      {/* Logo nhóm 4 ở phía trên thẻ lớn */}
+      <div className="w-24 h-24 mb-4 rounded-full shadow-lg border-4 border-white bg-white flex items-center justify-center overflow-hidden">
+            <video
+              src="/logo.mp4" // Đường dẫn tuyệt đối từ public
+              className="w-full h-full object-cover"
+              autoPlay
+              loop
+              muted
+              playsInline
+              style={{ objectPosition: 'center', aspectRatio: '1/1' }}
+            />
+      </div>
       <div className="bg-white/90 rounded-3xl shadow-2xl px-8 py-12 flex flex-col items-center max-w-md w-full">
         <h2 className="text-2xl md:text-3xl font-bold text-pink-700 mb-8">Thành viên nhóm 4</h2>
         <div className="flex flex-col gap-6 w-full mb-8">
@@ -22,6 +34,7 @@ const TeamMembers: React.FC = () => {
               className="bg-blue-50 rounded-xl shadow p-6 flex flex-col items-center opacity-0 animate-fade-in"
               style={{ animationDelay: `${idx * 0.4 + 0.2}s`, animationFillMode: 'forwards' }}
             >
+              {/* Avatar đã bị gỡ bỏ theo yêu cầu */}
               <div className="text-lg md:text-xl font-semibold text-gray-800 mb-1">{m.name}</div>
             {/* Role removed */}</div>
           ))}
