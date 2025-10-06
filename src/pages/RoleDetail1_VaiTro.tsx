@@ -2,8 +2,10 @@
 import React from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { useNavigate } from "react-router-dom";
 
 const RoleDetail1VaiTro = () => {
+  const navigate = useNavigate();
   return (
     <div className="min-h-screen flex flex-col bg-white">
       <Header />
@@ -96,11 +98,35 @@ const RoleDetail1VaiTro = () => {
               />
             </div>
           </div>
-          <div className="w-full max-w-3xl mt-24 text-sm text-gray-400 text-center">
+          <div className="w-full max-w-3xl mt-24 text-sm text-gray-400 text-center"></div>
+          {/* Arrow down touch effect to go to next role */}
+          <div className="flex flex-col items-center gap-4 mt-12 mb-2">
+            <button
+              onClick={() => navigate('/luc-luong-cau-thanh')}
+              className="group flex flex-col items-center focus:outline-none"
+              aria-label="Chuyển sang trang tiếp theo"
+            >
+              {/* <span className="text-gray-500 text-base mb-1">Tiếp theo</span> */}
+              <span className="inline-block animate-bounce">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="feather feather-arrow-down drop-shadow-md">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <polyline points="19 12 12 19 5 12"></polyline>
+                </svg>
+              </span>
+            </button>
+            <style>{`
+              @keyframes bounce {
+                0%, 100% { transform: translateY(0); }
+                50% { transform: translateY(16px); }
+              }
+              .animate-bounce {
+                animation: bounce 1.2s infinite cubic-bezier(.4,0,.2,1);
+              }
+            `}</style>
           </div>
         </div>
-      </main>
-      <Footer />
+  </main>
+  <Footer />
     </div>
   );
 };
