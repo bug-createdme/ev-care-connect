@@ -103,7 +103,7 @@ const ContactMeaning: React.FC = () => {
           Trong bối cảnh hội nhập quốc tế, đại đoàn kết toàn dân tộc càng có ý nghĩa quan trọng trong việc giữ gìn bản sắc văn hóa, phát huy nội lực, tranh thủ ngoại lực để phát triển đất nước.
         </p>
         <div style={highlightBox} className="text-base md:text-lg">
-          <b>Câu hỏi CQ: Đại đoàn kết dân tộc trong tư tưởng Hồ Chí Minh — liệu đó chỉ là sách lược tạm thời để vượt qua khó khăn, hay là một chiến lược lâu dài, xuyên suốt của cách mạng Việt Nam?</b>
+          <b>Bài học cho hiện tại: Đoàn kết tạo nên sức mạnh, chia rẽ dẫn đến suy yếu</b>
         </div>
       </main>
       <Footer />
